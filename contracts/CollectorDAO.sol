@@ -96,9 +96,7 @@ contract CollectorDAO is Ownable {
         );
 
         delegatedVote[_accountToRemoveDelegationFrom][msg.sender] = false;
-        if (votingPower[_accountToRemoveDelegationFrom] > 0) {
-            votingPower[_accountToRemoveDelegationFrom] -= 1;
-        }
+        votingPower[_accountToRemoveDelegationFrom] -= 1;
     }
 
     function voteOnProposal(uint256 proposalId, Vote vote)
