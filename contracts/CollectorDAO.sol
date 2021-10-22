@@ -124,6 +124,8 @@ contract CollectorDAO is Ownable {
         address account,
         Vote vote
     ) internal memberOnly {
+        require(!proposal.alreadyVoted[account], "ALREADY_VOTED");
+
         proposal.alreadyVoted[account] = true;
         proposal.voteCount++;
         if (vote == Vote.YES) {
