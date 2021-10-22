@@ -6,14 +6,15 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract MockupNFTMarket {
-  mapping (uint => address) tokens; // just for testing 
-  uint price = 0.2 ether;
+    mapping(uint256 => address) tokens; // just for testing
+    uint256 price = 0.2 ether;
 
-  function getPrice(uint _tokenId) external view returns (uint) {
-    console.log(_tokenId);
-    return price;
-  }
-  function purchase(uint _tokenId) external payable {
-    tokens[_tokenId] = msg.sender;
-  }
+    function getPrice(uint256 _tokenId) external view returns (uint256) {
+        console.log(_tokenId); // for the unused variable warning
+        return price;
+    }
+
+    function purchase(uint256 _tokenId) external payable {
+        tokens[_tokenId] = msg.sender;
+    }
 }

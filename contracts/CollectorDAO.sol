@@ -1,7 +1,6 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -41,8 +40,6 @@ contract CollectorDAO is Ownable {
     modifier activeProposal(uint256 proposalId) {
         uint256 quorum = Math.ceilDiv(25 * memberCount, 100);
 
-        Proposal storage proposal = proposals[proposalId];
-        console.log(proposal.deadline, block.timestamp);
         // If proposal is above deadline
         if (proposals[proposalId].deadline < block.timestamp) {
             // Less than 25% voted
